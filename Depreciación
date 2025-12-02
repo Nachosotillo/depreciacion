@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Depreciación - Contabilidad Venezuela</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            background: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .tab-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .content-section {
+            display: none;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 2em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #764ba2;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .card {
+            background: #f8f9fa;
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .formula {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            margin: 15px 0;
+            text-align: center;
+            font-weight: bold;
+            color: #495057;
+        }
+
+        .tip {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .tip::before {
+            content: "💡 TIP: ";
+            font-weight: bold;
+            color: #856404;
+        }
+
+        .warning {
+            background: #f8d7da;
+            border-left: 5px solid #dc3545;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .warning::before {
+            content: "⚠️ IMPORTANTE: ";
+            font-weight: bold;
+            color: #721c24;
+        }
+
+        .example {
+            background: #d1ecf1;
+            border-left: 5px solid #17a2b8;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .example::before {
+            content: "📝 EJEMPLO: ";
+            font-weight: bold;
+            color: #0c5460;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        .calculator {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            border: 2px solid #667eea;
+            margin: 20px 0;
+        }
+
+        .calc-input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .calc-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: transform 0.2s;
+        }
+
+        .calc-button:hover {
+            transform: scale(1.05);
+        }
+
+        .result {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+            margin: 30px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: #667eea;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 20px 0;
+            padding: 0 20px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #764ba2;
+            border-radius: 50%;
+            border: 4px solid white;
+        }
+
+        .steps {
+            counter-reset: step-counter;
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .steps li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 60px;
+            margin: 25px 0;
+        }
+
+        .steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .comparison-table {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .comparison-column {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .tabs {
+                flex-direction: column;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .comparison-table {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Guía Completa de Depreciación</h1>
+            <p class="subtitle">Cambios de Método, Políticas y Corrección de Errores</p>
+            <p style="color: #999; margin-top: 10px;">Basado en NIC 16 y NIC 8</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab('conceptos')">Conceptos Base</button>
+            <button class="tab-button" onclick="showTab('politicas')">Políticas</button>
+            <button class="tab-button" onclick="showTab('erogaciones')">Erogaciones</button>
+            <button class="tab-button" onclick="showTab('cambios')">Cambios</button>
+            <button class="tab-button" onclick="showTab('errores')">Errores</button>
+            <button class="tab-button" onclick="showTab('calculadora')">Calculadora</button>
+        </div>
+
+        <!-- CONCEPTOS BASE -->
+        <div id="conceptos" class="content-section active">
+            <h2>1. Conceptos Fundamentales</h2>
+            
+            <div class="card">
+                <h3>¿Qué es la Depreciación?</h3>
+                <p>Es la distribución sistemática del <strong>importe depreciable</strong> de un activo a lo largo de su <strong>vida útil</strong>. Es el reconocimiento contable del desgaste, uso u obsolescencia de un activo fijo.</p>
+            </div>
+
+            <h3>Elementos Clave (Los 5 Básicos)</h3>
+            <div class="card">
+                <p><strong>1. COSTO:</strong> Todo lo necesario para que el activo esté listo para su uso (precio + transporte + instalación + pruebas iniciales).</p>
+                
+                <p><strong>2. VALOR RESIDUAL (o de Salvamento):</strong> El dinero que esperas recuperar al final de su vida útil (puede ser un monto fijo o un % del costo).</p>
+                
+                <p><strong>3. VIDA ÚTIL:</strong> Puede medirse en:
+                    <ul>
+                        <li>Tiempo (años, meses)</li>
+                        <li>Unidades producidas</li>
+                        <li>Horas de uso</li>
+                        <li>Kilómetros recorridos</li>
+                    </ul>
+                </p>
+
+                <p><strong>4. MÉTODO de Depreciación:</strong> Línea Recta, Suma de Dígitos, Unidades de Producción, etc.</p>
+
+                <p><strong>5. POLÍTICA de Depreciación:</strong> Regla de la empresa sobre cuándo empezar/terminar de depreciar (fraccionada, medio año, 1-0, 0-1).</p>
+            </div>
+
+            <h3>Fórmulas Esenciales</h3>
+            <div class="formula">
+                Importe Depreciable = Costo - Valor Residual
+            </div>
+
+            <div class="formula">
+                Depreciación Anual (Línea Recta) = Importe Depreciable ÷ Vida Útil
+            </div>
+
+            <div class="formula">
+                Valor en Libros = Costo - Depreciación Acumulada
+            </div>
+
+            <div class="warning">
+                La depreciación NO comienza cuando compras el activo, sino cuando está <strong>listo y en el lugar para ser usado</strong> según lo determine la gerencia.
+            </div>
+
+            <div class="example">
+                Si compras una fotocopiadora en enero pero la instalas en julio, empiezas a depreciar en julio, NO en enero.
+            </div>
+
+            <h3>¿Cuándo termina la depreciación?</h3>
+            <ul>
+                <li>Cuando das de baja el activo (lo vendes, desechas, etc.)</li>
+                <li>Cuando lo clasificas como "Mantenido para la Venta" (NIIF 5)</li>
+                <li><strong>Lo que ocurra primero</strong></li>
+            </ul>
+
+            <div class="tip">
+                Dibuja siempre una <strong>línea del tiempo</strong> con las fechas clave: compra, puesta en funcionamiento, cierre de ejercicios, erogaciones/cambios. Te ayudará a no perderte.
+            </div>
+        </div>
+
+        <!-- POLÍTICAS -->
+        <div id="politicas" class="content-section">
+            <h2>2. Políticas de Depreciación</h2>
+            
+            <p>La política define <strong>cómo calcular la depreciación en el año de compra y en el año de retiro</strong>. Es una decisión de la empresa y debe aplicarse consistentemente.</p>
+
+            <h3>Comparación de Políticas</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Política</th>
+                        <th>Año de Compra</th>
+                        <th>Año de Retiro</th>
+                        <th>Uso Típico</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Fraccionada</strong></td>
+                        <td>Meses exactos</td>
+                        <td>Meses exactos</td>
+                        <td>Lo más preciso y lógico</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Medio Año</strong></td>
+                        <td>6 meses (0.5 año)</td>
+                        <td>6 meses (0.5 año)</td>
+                        <td>Simplificación administrativa</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1-0 (Uno-Cero)</strong></td>
+                        <td>1 año completo</td>
+                        <td>0 (nada)</td>
+                        <td>Conservador al inicio</td>
+                    </tr>
+                    <tr>
+                        <td><strong>0-1 (Cero-Uno)</strong></td>
+                        <td>0 (nada)</td>
+                        <td>1 año completo</td>
+                        <td>Conservador al final</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Ejemplo Práctico: Mobiliario de Bs. 10,000</h3>
+            <div class="card">
+                <p><strong>Datos:</strong></p>
+                <ul>
+                    <li>Costo: Bs. 10,000</li>
+                    <li>Valor Residual: Bs. 0</li>
+                    <li>Vida Útil: 5 años</li>
+                    <li>Comprado: Septiembre 2020</li>
+                    <li>Cierre: Diciembre 2020</li>
+                    <li>Depreciación Anual: Bs. 2,000</li>
+                </ul>
+
+                <h4>Resultado según cada política:</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Política</th>
+                            <th>Cálculo</th>
+                            <th>Depreciación 2020</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Fraccionada</td>
+                            <td>2,000 × (4/12)</td>
+                            <td>Bs. 667</td>
+                        </tr>
+                        <tr>
+                            <td>Medio Año</td>
+                            <td>2,000 × 0.5</td>
+                            <td>Bs. 1,000</td>
+                        </tr>
+                        <tr>
+                            <td>1-0</td>
+                            <td>2,000 × 1</td>
+                            <td>Bs. 2,000</td>
+                        </tr>
+                        <tr>
+                            <td>0-1</td>
+                            <td>2,000 × 0</td>
+                            <td>Bs. 0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="warning">
+                En erogaciones capitalizables, cuando "retiras" una parte vieja e "incorporas" una nueva, aplicas las reglas de FIN de política para la vieja e INICIO de política para la nueva.
+            </div>
+
+            <div class="tip">
+                Si usas política 1-0 y retiras un activo, la depreciación del año de retiro es CERO (no deprecias nada ese año).
+            </div>
+        </div>
+
+        <!-- EROGACIONES CAPITALIZABLES -->
+        <div id="erogaciones" class="content-section">
+            <h2>3. Erogaciones Capitalizables</h2>
+
+            <div class="card">
+                <h3>¿Qué es una Erogación Capitalizable?</h3>
+                <p>Es un <strong>gasto que mejora el activo</strong> aumentando su:</p>
+                <ul>
+                    <li>Vida útil</li>
+                    <li>Calidad de producción</li>
+                    <li>Productividad/eficiencia</li>
+                </ul>
+                <p>Se suma al costo del activo en lugar de registrarse como gasto del periodo.</p>
+            </div>
+
+            <div class="example">
+                <strong>El Escarabajo Volador:</strong> Tienes un auto (Escarabajo) que tarda 40 minutos en un trayecto. Le instalas un dispositivo para que vuele y ahora tarda 8 minutos. Esto aumenta dramáticamente su productividad → Es CAPITALIZABLE.
+            </div>
+
+            <h3>Erogación vs. Gasto de Mantenimiento</h3>
+            <div class="comparison-table">
+                <div class="comparison-column">
+                    <h4>✅ CAPITALIZABLE</h4>
+                    <ul>
+                        <li>Motor más potente</li>
+                        <li>Ampliación de capacidad</li>
+                        <li>Mejora tecnológica</li>
+                        <li>Aumenta vida útil</li>
+                    </ul>
+                </div>
+                <div class="comparison-column">
+                    <h4>❌ GASTO</h4>
+                    <ul>
+                        <li>Reparación de poleas rotas</li>
+                        <li>Cambio de cables quemados</li>
+                        <li>Mantenimiento rutinario</li>
+                        <li>No mejora, solo mantiene</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Proceso Contable (Los 4 Pasos)</h3>
+            <ol class="steps">
+                <li>
+                    <strong>Actualizar Depreciación (Fin de Política)</strong>
+                    <p>Calcula la depreciación hasta la fecha EXACTA de la erogación. Aplica la política de "retiro" a la parte vieja.</p>
+                </li>
+                <li>
+                    <strong>Calcular Saldos Previos</strong>
+                    <p>Determina cuánta depreciación acumulada llevas. Si no te dan el costo original, puedes despejarlo de la fórmula de depreciación.</p>
+                </li>
+                <li>
+                    <strong>Registrar la Sustitución</strong>
+                    <p>Das de baja la pieza vieja y das de alta la nueva:</p>
+                    <div class="formula">
+                        Nuevo Costo = Costo Original - Costo Pieza Vieja + Costo Erogación Nueva
+                    </div>
+                    <div class="formula">
+                        Nueva Dep. Acum. = Dep. Acum. Original - Dep. Acum. Pieza Vieja
+                    </div>
+                    <div class="tip">
+                        Si no te dan la depreciación de la pieza vieja, usa <strong>regla de tres</strong> proporcional al costo.
+                    </div>
+                </li>
+                <li>
+                    <strong>Calcular Nuevo Cargo Anual</strong>
+                    <p>Con los nuevos valores, calcula:</p>
+                    <div class="formula">
+                        Nuevo Valor en Libros = Nuevo Costo - Nueva Dep. Acum.
+                    </div>
+                    <div class="formula">
+                        Nueva Base Depreciable = Nuevo Valor en Libros - Nuevo Valor Residual
+                    </div>
+                    <div class="formula">
+                        Nuevo Cargo Anual = Nueva Base Depreciable ÷ Nueva Vida Útil Restante
+                    </div>
+                </li>
+            </ol>
+
+            <div class="warning">
+                Si el valor de salvamento es un PORCENTAJE del costo (ej. 10%), al cambiar el costo, también cambia el valor de salvamento. ¡Recalcúlalo!
+            </div>
+
+            <div class="example">
+                <strong>Ganancia en Retiro:</strong> Si entregan una pieza vieja que vale en libros Bs. 50,000 pero te reconocen Bs. 60,000, hay una ganancia de Bs. 10,000 que se registra como "Ganancia en Retiro de Activo".
+            </div>
+        </div>
+
+        <!-- CAMBIOS DE ESTIMADOS -->
+        <div id="cambios" class="content-section">
+            <h2>4. Cambio de Estimados y Métodos</h2>
+
+            <div class="card">
+                <h3>¿Qué es un Cambio de Estimado?</h3>
+                <p>Ocurre cuando la empresa cambia:</p>
+                <ul>
+                    <li>La vida útil del activo</li>
+                    <li>El valor residual</li>
+                    <li>El método de depreciación (ej. de Línea Recta a Unidades de Producción)</li>
+                </ul>
+            </div>
+
+            <div class="warning">
+                <strong>Regla de Oro (NIC 8):</strong> Los cambios de estimado se aplican de forma <strong>PROSPECTIVA</strong>, es decir, desde el momento del cambio hacia adelante. NO se corrige el pasado.
+            </div>
+
+            <h3>Metodología de 4 Pasos</h3>
+            <ol class="steps">
+                <li>
+                    <strong>Identificar Datos del Activo "Viejo"</strong>
+                    <p>Calcula el Costo original y la Depreciación Acumulada hasta el último cierre ANTES del cambio.</p>
+                </li>
+                <li>
+                    <strong>Calcular Nueva Base Depreciable (NBD)</strong>
+                    <div class="formula">
+                        NBD = Costo - Dep. Acum. (hasta hoy) - Nuevo Valor Residual
+                    </div>
+                    <p>Este es el monto que te falta por depreciar bajo las nuevas reglas.</p>
+                </li>
+                <li>
+                    <strong>Determinar Nueva Vida Útil Restante</strong>
+                    <p>Ignora los años que ya pasaron. Pregúntate: ¿Cuántos años/unidades/horas le quedan al activo a partir de HOY?</p>
+                    <div class="tip">
+                        Dibuja una línea del tiempo. Si el activo tenía 10 años y ya pasaron 4, pero ahora estimas que durará 12 años totales, la vida útil restante es 8 años (12 - 4).
+                    </div>
+                </li>
+                <li>
+                    <strong>Ajustar el Periodo Abierto (si aplica)</strong>
+                    <p>Si el cambio se decide a mitad de año y ya registraste depreciación con el método viejo, ajusta la diferencia:</p>
+                    <div class="formula">
+                        Ajuste = Depreciación Correcta - Depreciación Ya Registrada
+                    </div>
+                </li>
+            </ol>
+
+            <div class="example">
+                <strong>Caso Práctico:</strong>
+                <ul>
+                    <li>Costo: Bs. 100,000</li>
+                    <li>Dep. Acum. al 31/12/2022: Bs. 40,000</li>
+                    <li>Valor en Libros: Bs. 60,000</li>
+                    <li>En 2023 cambian: Vida útil restante de 6 a 4 años, Valor Residual de 0 a Bs. 8,000</li>
+                </ul>
+                <p><strong>Cálculo:</strong></p>
+                <div class="formula">
+                    NBD = 60,000 - 8,000 = 52,000
+                </div>
+                <div class="formula">
+                    Nuevo Cargo Anual = 52,000 ÷ 4 años = 13,000/año
+                </div>
+                <p>Desde 2023 en adelante, se deprecia Bs. 13,000 anual. Lo de años anteriores NO se toca.</p>
+            </div>
+
+            <h3>Cambio de Método (ej. Línea Recta → Unidades de Producción)</h3>
+            <div class="card">
+                <p>El proceso es similar, pero ahora el cálculo de depreciación cambia completamente:</p>
+                <div class="formula">
+                    Depreciación por Unidad = Nueva Base Depreciable ÷ Unidades Totales Restantes
+                </div>
+                <div class="formula">
+                    Depreciación del Periodo = Unidades Producidas × Depreciación por Unidad
+                </div>
+            </div>
+
+            <div class="tip">
+                Para métodos de unidades, suma las unidades producidas en años anteriores para saber cuántas quedan de la vida útil original.
+            </div>
+        </div>
+
+        <!-- CORRECCIÓN DE ERRORES -->
+        <div id="errores" class="content-section">
+            <h2>5. Corrección de Errores (NIC 8)</h2>
+
+            <div class="card">
+                <h3>¿Qué es un Error Contable?</h3>
+                <p>Errores de periodos anteriores que se descubren HOY:</p>
+                <ul>
+                    <li>No se registró una mejora capitalizable (se puso como gasto)</li>
+                    <li>Se usó mal la vida útil</li>
+                    <li>Se aplicó mal el método o la política</li>
+                    <li>Errores matemáticos</li>
+                </ul>
+            </div>
+
+            <div class="warning">
+                Los errores se corrigen de forma <strong>RETROSPECTIVA</strong>, es decir, se ajustan como si nunca hubiera ocurrido el error. Esto es diferente a los cambios de estimado.
+            </div>
+
+            <h3>Metodología de 3 Pasos (CRUCIAL)</h3>
+            <ol class="steps">
+                <li>
+                    <strong>Hacer lo CORRECTO</strong>
+                    <p>Calcula todo el ejercicio desde el inicio (años atrás) como si fueras un experto que no comete errores. Determina los saldos que DEBERÍAN tener las cuentas hoy.</p>
+                    <div class="tip">
+                        Usa papel aparte. Haz el ejercicio completo "perfecto" ignorando que hubo error.
+                    </div>
+                </li>
+                <li>
+                    <strong>Hacer lo INCORRECTO</strong>
+                    <p>Replica exactamente lo que hizo la empresa (el contador anterior) según el enunciado. Determina los saldos que TIENEN en libros hoy.</p>
+                    <div class="tip">
+                        Aunque te duela ver el error, reprodúcelo fielmente para comparar.
+                    </div>
+                </li>
+                <li>
+                    <strong>Comparar y Ajustar (Cuadro Comparativo)</strong>
+                    <p>Compara saldo por saldo. La diferencia es tu asiento de ajuste.</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Cuenta</th>
+                                <th>Saldo Correcto</th>
+                                <th>Saldo Real</th>
+                                <th>Ajuste</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Maquinaria</td>
+                                <td>100,000</td>
+                                <td>95,000</td>
+                                <td>Debitar 5,000</td>
+                            </tr>
+                            <tr>
+                                <td>Dep. Acumulada</td>
+                                <td>40,000</td>
+                                <td>35,000</td>
+                                <td>Acreditar 5,000</td>
+                            </tr>
+                            <tr>
+                                <td>Gasto Depreciación</td>
+                                <td>8,000</td>
+                                <td>10,000</td>
+                                <td>Acreditar 2,000</td>
+                            </tr>
+                            <tr>
+                                <td>Utilidades No Dist.</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>Debitar 2,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li>
+            </ol>
+
+            <div class="warning">
+                <strong>Separar Ejercicios Cerrados vs. Abiertos:</strong>
+                <ul>
+                    <li><strong>Años Cerrados:</strong> Las cuentas de Gasto y Ganancia/Pérdida ya NO existen (se cerraron). Cualquier corrección va contra <strong>Utilidades No Distribuidas</strong>.</li>
+                    <li><strong>Año Actual Abierto:</strong> Las cuentas de Gasto y Ganancia/Pérdida SÍ existen. Ajústalas directamente.</li>
+                </ul>
+            </div>
+
+            <h3>Ejemplo de Asiento de Corrección</h3>
+            <div class="card">
+                <p><strong>Situación:</strong> En 2020 capitalizaste mal una mejora como gasto. Hoy es 2024.</p>
+                <p><strong>Asiento de Corrección 2024:</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cuenta</th>
+                            <th>Debe</th>
+                            <th>Haber</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Maquinaria</td>
+                            <td>50,000</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Utilidades No Distribuidas</td>
+                            <td>15,000</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Depreciación Acumulada</td>
+                            <td></td>
+                            <td>15,000</td>
+                        </tr>
+                        <tr>
+                            <td>Utilidades No Distribuidas</td>
+                            <td></td>
+                            <td>50,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><em>Explicación: Se corrige el activo (+50k), se ajusta la depreciación que debió haberse registrado en años cerrados (15k), y se ajustan las utilidades de años anteriores.</em></p>
+            </div>
+
+            <div class="tip">
+                Si la empresa registró gastos de MÁS (ej. puso 885k cuando debió ser 235k), el ajuste implica "devolver" esa diferencia a Utilidades No Distribuidas, porque fue un gasto exagerado que redujo injustamente las utilidades del pasado.
+            </div>
+
+            <h3>Marco Normativo: NIC 8</h3>
+            <div class="card">
+                <p>La NIC 8 establece que:</p>
+                <ul>
+                    <li>Los errores de periodos anteriores son <strong>omisiones e inexactitudes</strong></li>
+                    <li>Se corrigen <strong>retrospectivamente</strong></li>
+                    <li>Se ajusta el saldo inicial de Utilidades No Distribuidas del periodo más antiguo presentado</li>
+                    <li>Se re-expresan los estados financieros comparativos</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CALCULADORA -->
+        <div id="calculadora" class="content-section">
+            <h2>6. Calculadora de Depreciación</h2>
+
+            <div class="calculator">
+                <h3>Calculadora de Línea Recta</h3>
+                
+                <label>Costo del Activo (Bs.):</label>
+                <input type="number" id="costo" class="calc-input" placeholder="Ej: 100000">
+
+                <label>Valor Residual (Bs.):</label>
+                <input type="number" id="residual" class="calc-input" placeholder="Ej: 10000">
+
+                <label>Vida Útil (años):</label>
+                <input type="number" id="vidaUtil" class="calc-input" placeholder="Ej: 5">
+
+                <label>Mes de Compra (1-12):</label>
+                <input type="number" id="mesCompra" class="calc-input" min="1" max="12" placeholder="Ej: 3 (marzo)">
+
+                <label>Mes de Cierre (1-12):</label>
+                <input type="number" id="mesCierre" class="calc-input" min="1" max="12" value="12" placeholder="Ej: 12 (diciembre)">
+
+                <label>Política de Depreciación:</label>
+                <select id="politica" class="calc-input">
+                    <option value="fraccionada">Fraccionada (meses exactos)</option>
+                    <option value="medioAnio">Medio Año</option>
+                    <option value="unocero">1-0 (Uno-Cero)</option>
+                    <option value="cerouno">0-1 (Cero-Uno)</option>
+                </select>
+
+                <button class="calc-button" onclick="calcularDepreciacion()">Calcular Depreciación</button>
+
+                <div id="resultadoCalc" class="result"></div>
+            </div>
+
+            <div class="calculator" style="margin-top: 30px;">
+                <h3>Calculadora de Cambio de Estimado</h3>
+                
+                <label>Costo Original (Bs.):</label>
+                <input type="number" id="costoOriginal" class="calc-input" placeholder="Ej: 100000">
+
+                <label>Depreciación Acumulada hasta hoy (Bs.):</label>
+                <input type="number" id="depAcum" class="calc-input" placeholder="Ej: 40000">
+
+                <label>Nuevo Valor Residual (Bs.):</label>
+                <input type="number" id="nuevoResidual" class="calc-input" placeholder="Ej: 8000">
+
+                <label>Nueva Vida Útil Restante (años):</label>
+                <input type="number" id="nuevaVida" class="calc-input" placeholder="Ej: 4">
+
+                <button class="calc-button" onclick="calcularCambioEstimado()">Calcular Nuevo Cargo</button>
+
+                <div id="resultadoCambio" class="result"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            // Ocultar todas las secciones
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.classList.remove('active'));
+
+            // Desactivar todos los botones
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            // Activar la sección seleccionada
+            document.getElementById(tabName).classList.add('active');
+
+            // Activar el botón correspondiente
+            event.target.classList.add('active');
+
+            // Scroll suave al inicio
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function calcularDepreciacion() {
+            const costo = parseFloat(document.getElementById('costo').value);
+            const residual = parseFloat(document.getElementById('residual').value);
+            const vidaUtil = parseFloat(document.getElementById('vidaUtil').value);
+            const mesCompra = parseInt(document.getElementById('mesCompra').value);
+            const mesCierre = parseInt(document.getElementById('mesCierre').value);
+            const politica = document.getElementById('politica').value;
+
+            if (!costo || !vidaUtil || !mesCompra || !mesCierre) {
+                alert('Por favor completa todos los campos obligatorios');
+                return;
+            }
+
+            const importeDepreciable = costo - (residual || 0);
+            const depreciacionAnual = importeDepreciable / vidaUtil;
+
+            let depreciacionPrimerAnio = 0;
+            let explicacion = '';
+
+            switch(politica) {
+                case 'fraccionada':
+                    const mesesUsados = mesCierre - mesCompra + 1;
+                    depreciacionPrimerAnio = depreciacionAnual * (mesesUsados / 12);
+                    explicacion = `Se deprecian ${mesesUsados} meses del primer año`;
+                    break;
+                case 'medioAnio':
+                    depreciacionPrimerAnio = depreciacionAnual * 0.5;
+                    explicacion = 'Se deprecia medio año (6 meses) en el año de compra';
+                    break;
+                case 'unocero':
+                    depreciacionPrimerAnio = depreciacionAnual;
+                    explicacion = 'Se deprecia 1 año completo en el año de compra';
+                    break;
+                case 'cerouno':
+                    depreciacionPrimerAnio = 0;
+                    explicacion = 'No se deprecia en el año de compra (política 0-1)';
+                    break;
+            }
+
+            const resultado = document.getElementById('resultadoCalc');
+            resultado.style.display = 'block';
+            resultado.innerHTML = `
+                <h4>📊 Resultados del Cálculo</h4>
+                <p><strong>Importe Depreciable:</strong> Bs. ${importeDepreciable.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                <p><strong>Depreciación Anual (años completos):</strong> Bs. ${depreciacionAnual.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                <p><strong>Depreciación Primer Año:</strong> Bs. ${depreciacionPrimerAnio.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                <p><em>${explicacion}</em></p>
+                <hr style="margin: 15px 0;">
+                <p><strong>Valor en Libros al cierre del primer año:</strong> Bs. ${(costo - depreciacionPrimerAnio).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+            `;
+        }
+
+        function calcularCambioEstimado() {
+            const costoOriginal = parseFloat(document.getElementById('costoOriginal').value);
+            const depAcum = parseFloat(document.getElementById('depAcum').value);
+            const nuevoResidual = parseFloat(document.getElementById('nuevoResidual').value) || 0;
+            const nuevaVida = parseFloat(document.getElementById('nuevaVida').value);
+
+            if (!costoOriginal || !depAcum || !nuevaVida) {
+                alert('Por favor completa todos los campos obligatorios');
+                return;
+            }
+
+            const valorLibros = costoOriginal - depAcum;
+            const nuevaBaseDepreciable = valorLibros - nuevoResidual;
+            const nuevoCargo = nuevaBaseDepreciable / nuevaVida;
+
+            const resultado = document.getElementById('resultadoCambio');
+            resultado.style.display = 'block';
+            resultado.innerHTML = `
+                <h4>📊 Resultados del Cambio de Estimado</h4>
+                <p><strong>Valor en Libros actual:</strong> Bs. ${valorLibros.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                <p><strong>Nueva Base Depreciable:</strong> Bs. ${nuevaBaseDepreciable.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                <p><strong>Nuevo Cargo Anual:</strong> Bs. ${nuevoCargo.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                <hr style="margin: 15px 0;">
+                <p><em>Este nuevo cargo se aplicará desde este año en adelante (efecto prospectivo). No se corrige nada del pasado.</em></p>
+            `;
+        }
+    </script>
+</body>
+</html>
