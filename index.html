@@ -285,7 +285,7 @@
             font-size: 1.2em;
         }
 
-        /* --- CSS ACTUALIZADO PARA TABLAS RESPONSIVAS --- */
+        /* --- CSS CORREGIDO PARA TABLAS (FONDO BLANCO) --- */
         
         .table-wrapper {
             width: 100%;
@@ -294,33 +294,40 @@
             margin: 20px 0;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             border-radius: 8px;
-            border: 1px solid #eee;
+            border: 1px solid #ddd;
+            background-color: white; /* Asegura fondo blanco en el contenedor */
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 0; /* El margen ahora lo maneja el wrapper */
-            min-width: 600px; /* Ancho mínimo para forzar el scroll en móviles y evitar que se apriete */
+            margin: 0; 
+            min-width: 600px; 
+            background-color: white; /* Asegura fondo blanco en la tabla */
         }
 
         th, td {
             padding: 12px;
             text-align: left;
             border: 1px solid #ddd;
-            white-space: nowrap; /* Evita que el texto y las fórmulas se partan */
+            white-space: nowrap; 
         }
 
         th {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             font-weight: bold;
-            position: sticky; /* Opcional: fija el encabezado */
+            position: sticky; 
             top: 0;
+            z-index: 10; /* Asegura que el encabezado esté sobre el contenido al hacer scroll */
         }
 
         tr:nth-child(even) {
-            background: #f8f9fa;
+            background: #f8f9fa; /* Gris muy claro para filas pares */
+        }
+        
+        tr:nth-child(odd) {
+            background: #ffffff; /* Blanco puro para filas impares */
         }
 
         /* --- FIN CSS TABLAS --- */
