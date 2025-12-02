@@ -285,28 +285,45 @@
             font-size: 1.2em;
         }
 
+        /* --- CSS ACTUALIZADO PARA TABLAS RESPONSIVAS --- */
+        
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto; /* Permite scroll horizontal */
+            -webkit-overflow-scrolling: touch;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin: 0; /* El margen ahora lo maneja el wrapper */
+            min-width: 600px; /* Ancho mínimo para forzar el scroll en móviles y evitar que se apriete */
         }
 
         th, td {
             padding: 12px;
             text-align: left;
             border: 1px solid #ddd;
+            white-space: nowrap; /* Evita que el texto y las fórmulas se partan */
         }
 
         th {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             font-weight: bold;
+            position: sticky; /* Opcional: fija el encabezado */
+            top: 0;
         }
 
         tr:nth-child(even) {
             background: #f8f9fa;
         }
+
+        /* --- FIN CSS TABLAS --- */
 
         .comparison-table {
             display: grid;
@@ -354,7 +371,6 @@
             <button class="tab-button" onclick="showTab('calculadora')">Calculadora</button>
         </div>
 
-        <!-- CONCEPTOS BASE -->
         <div id="conceptos" class="content-section active">
             <h2>1. Conceptos Fundamentales</h2>
             
@@ -416,49 +432,50 @@
             </div>
         </div>
 
-        <!-- POLÍTICAS -->
         <div id="politicas" class="content-section">
             <h2>2. Políticas de Depreciación</h2>
             
             <p>La política define <strong>cómo calcular la depreciación en el año de compra y en el año de retiro</strong>. Es una decisión de la empresa y debe aplicarse consistentemente.</p>
 
             <h3>Comparación de Políticas</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Política</th>
-                        <th>Año de Compra</th>
-                        <th>Año de Retiro</th>
-                        <th>Uso Típico</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Fraccionada</strong></td>
-                        <td>Meses exactos</td>
-                        <td>Meses exactos</td>
-                        <td>Lo más preciso y lógico</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Medio Año</strong></td>
-                        <td>6 meses (0.5 año)</td>
-                        <td>6 meses (0.5 año)</td>
-                        <td>Simplificación administrativa</td>
-                    </tr>
-                    <tr>
-                        <td><strong>1-0 (Uno-Cero)</strong></td>
-                        <td>1 año completo</td>
-                        <td>0 (nada)</td>
-                        <td>Conservador al inicio</td>
-                    </tr>
-                    <tr>
-                        <td><strong>0-1 (Cero-Uno)</strong></td>
-                        <td>0 (nada)</td>
-                        <td>1 año completo</td>
-                        <td>Conservador al final</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Política</th>
+                            <th>Año de Compra</th>
+                            <th>Año de Retiro</th>
+                            <th>Uso Típico</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Fraccionada</strong></td>
+                            <td>Meses exactos</td>
+                            <td>Meses exactos</td>
+                            <td>Lo más preciso y lógico</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Medio Año</strong></td>
+                            <td>6 meses (0.5 año)</td>
+                            <td>6 meses (0.5 año)</td>
+                            <td>Simplificación administrativa</td>
+                        </tr>
+                        <tr>
+                            <td><strong>1-0 (Uno-Cero)</strong></td>
+                            <td>1 año completo</td>
+                            <td>0 (nada)</td>
+                            <td>Conservador al inicio</td>
+                        </tr>
+                        <tr>
+                            <td><strong>0-1 (Cero-Uno)</strong></td>
+                            <td>0 (nada)</td>
+                            <td>1 año completo</td>
+                            <td>Conservador al final</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
             <h3>Ejemplo Práctico: Mobiliario de Bs. 10,000</h3>
             <div class="card">
@@ -473,37 +490,39 @@
                 </ul>
 
                 <h4>Resultado según cada política:</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Política</th>
-                            <th>Cálculo</th>
-                            <th>Depreciación 2020</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Fraccionada</td>
-                            <td>2,000 × (4/12)</td>
-                            <td>Bs. 667</td>
-                        </tr>
-                        <tr>
-                            <td>Medio Año</td>
-                            <td>2,000 × 0.5</td>
-                            <td>Bs. 1,000</td>
-                        </tr>
-                        <tr>
-                            <td>1-0</td>
-                            <td>2,000 × 1</td>
-                            <td>Bs. 2,000</td>
-                        </tr>
-                        <tr>
-                            <td>0-1</td>
-                            <td>2,000 × 0</td>
-                            <td>Bs. 0</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Política</th>
+                                <th>Cálculo</th>
+                                <th>Depreciación 2020</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Fraccionada</td>
+                                <td>2,000 × (4/12)</td>
+                                <td>Bs. 667</td>
+                            </tr>
+                            <tr>
+                                <td>Medio Año</td>
+                                <td>2,000 × 0.5</td>
+                                <td>Bs. 1,000</td>
+                            </tr>
+                            <tr>
+                                <td>1-0</td>
+                                <td>2,000 × 1</td>
+                                <td>Bs. 2,000</td>
+                            </tr>
+                            <tr>
+                                <td>0-1</td>
+                                <td>2,000 × 0</td>
+                                <td>Bs. 0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <div class="warning">
@@ -515,7 +534,6 @@
             </div>
         </div>
 
-        <!-- EROGACIONES CAPITALIZABLES -->
         <div id="erogaciones" class="content-section">
             <h2>3. Erogaciones Capitalizables</h2>
 
@@ -603,7 +621,6 @@
             </div>
         </div>
 
-        <!-- CAMBIOS DE ESTIMADOS -->
         <div id="cambios" class="content-section">
             <h2>4. Cambio de Estimados y Métodos</h2>
 
@@ -723,27 +740,29 @@
                 </div>
 
                 <p><strong>Asiento 2023:</strong></p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Cuenta</th>
-                            <th>Debe</th>
-                            <th>Haber</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Gasto por Depreciación</td>
-                            <td>14,736</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Depreciación Acumulada</td>
-                            <td></td>
-                            <td>14,736</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Cuenta</th>
+                                <th>Debe</th>
+                                <th>Haber</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Gasto por Depreciación</td>
+                                <td>14,736</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Depreciación Acumulada</td>
+                                <td></td>
+                                <td>14,736</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <h3>📘 Ejemplo 2: Línea Recta → Suma de Dígitos</h3>
@@ -774,36 +793,38 @@
                     Nueva Base Depreciable = 51,200 - 8,000 = 43,200
                 </div>
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Año</th>
-                            <th>Fracción</th>
-                            <th>Cálculo</th>
-                            <th>Depreciación</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>2023</td>
-                            <td>3/6</td>
-                            <td>43,200 × (3/6)</td>
-                            <td>21,600</td>
-                        </tr>
-                        <tr>
-                            <td>2024</td>
-                            <td>2/6</td>
-                            <td>43,200 × (2/6)</td>
-                            <td>14,400</td>
-                        </tr>
-                        <tr>
-                            <td>2025</td>
-                            <td>1/6</td>
-                            <td>43,200 × (1/6)</td>
-                            <td>7,200</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Año</th>
+                                <th>Fracción</th>
+                                <th>Cálculo</th>
+                                <th>Depreciación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2023</td>
+                                <td>3/6</td>
+                                <td>43,200 × (3/6)</td>
+                                <td>21,600</td>
+                            </tr>
+                            <tr>
+                                <td>2024</td>
+                                <td>2/6</td>
+                                <td>43,200 × (2/6)</td>
+                                <td>14,400</td>
+                            </tr>
+                            <tr>
+                                <td>2025</td>
+                                <td>1/6</td>
+                                <td>43,200 × (1/6)</td>
+                                <td>7,200</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
                 <p><strong>Ventaja:</strong> El vehículo deprecia más en los primeros años cuando su uso es más intenso.</p>
             </div>
@@ -863,37 +884,39 @@
                     Depreciación Anual Completa = (150,000 - 15,000) ÷ 9 = 15,000/año
                 </div>
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Año</th>
-                            <th>Cálculo</th>
-                            <th>Depreciación</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>2020</td>
-                            <td>15,000 × 0.5</td>
-                            <td>7,500</td>
-                        </tr>
-                        <tr>
-                            <td>2021</td>
-                            <td>15,000 × 1</td>
-                            <td>15,000</td>
-                        </tr>
-                        <tr>
-                            <td>2022</td>
-                            <td>15,000 × 1</td>
-                            <td>15,000</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Total</strong></td>
-                            <td></td>
-                            <td><strong>37,500</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Año</th>
+                                <th>Cálculo</th>
+                                <th>Depreciación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2020</td>
+                                <td>15,000 × 0.5</td>
+                                <td>7,500</td>
+                            </tr>
+                            <tr>
+                                <td>2021</td>
+                                <td>15,000 × 1</td>
+                                <td>15,000</td>
+                            </tr>
+                            <tr>
+                                <td>2022</td>
+                                <td>15,000 × 1</td>
+                                <td>15,000</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total</strong></td>
+                                <td></td>
+                                <td><strong>37,500</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
                 <p>Valor en Libros al 31/12/2022: Bs. 112,500</p>
 
@@ -955,45 +978,46 @@
             </div>
 
             <h3>Tabla Comparativa de Métodos</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Método</th>
-                        <th>Fórmula Base</th>
-                        <th>Cuándo Usarlo</th>
-                        <th>Patrón</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Línea Recta</strong></td>
-                        <td>(Costo - VR) ÷ Vida Útil</td>
-                        <td>Uso uniforme en el tiempo</td>
-                        <td>Constante</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Unidades de Producción</strong></td>
-                        <td>[(Costo - VR) ÷ Unidades Totales] × Unidades del Periodo</td>
-                        <td>Desgaste por uso variable</td>
-                        <td>Variable</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Suma de Dígitos</strong></td>
-                        <td>(Costo - VR) × (Años Restantes ÷ Suma)</td>
-                        <td>Mayor uso/obsolescencia inicial</td>
-                        <td>Decreciente</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Saldo Decreciente</strong></td>
-                        <td>Valor en Libros × Tasa Fija</td>
-                        <td>Activos tecnológicos</td>
-                        <td>Decreciente</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Método</th>
+                            <th>Fórmula Base</th>
+                            <th>Cuándo Usarlo</th>
+                            <th>Patrón</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Línea Recta</strong></td>
+                            <td>(Costo - VR) ÷ Vida Útil</td>
+                            <td>Uso uniforme en el tiempo</td>
+                            <td>Constante</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Unidades de Producción</strong></td>
+                            <td>[(Costo - VR) ÷ Unidades Totales] × Unidades del Periodo</td>
+                            <td>Desgaste por uso variable</td>
+                            <td>Variable</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Suma de Dígitos</strong></td>
+                            <td>(Costo - VR) × (Años Restantes ÷ Suma)</td>
+                            <td>Mayor uso/obsolescencia inicial</td>
+                            <td>Decreciente</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Saldo Decreciente</strong></td>
+                            <td>Valor en Libros × Tasa Fija</td>
+                            <td>Activos tecnológicos</td>
+                            <td>Decreciente</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
-        <!-- CORRECCIÓN DE ERRORES -->
         <div id="errores" class="content-section">
             <h2>5. Corrección de Errores (NIC 8)</h2>
 
@@ -1031,42 +1055,44 @@
                 <li>
                     <strong>Comparar y Ajustar (Cuadro Comparativo)</strong>
                     <p>Compara saldo por saldo. La diferencia es tu asiento de ajuste.</p>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Cuenta</th>
-                                <th>Saldo Correcto</th>
-                                <th>Saldo Real</th>
-                                <th>Ajuste</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Maquinaria</td>
-                                <td>100,000</td>
-                                <td>95,000</td>
-                                <td>Debitar 5,000</td>
-                            </tr>
-                            <tr>
-                                <td>Dep. Acumulada</td>
-                                <td>40,000</td>
-                                <td>35,000</td>
-                                <td>Acreditar 5,000</td>
-                            </tr>
-                            <tr>
-                                <td>Gasto Depreciación</td>
-                                <td>8,000</td>
-                                <td>10,000</td>
-                                <td>Acreditar 2,000</td>
-                            </tr>
-                            <tr>
-                                <td>Utilidades No Dist.</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>Debitar 2,000</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Cuenta</th>
+                                    <th>Saldo Correcto</th>
+                                    <th>Saldo Real</th>
+                                    <th>Ajuste</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Maquinaria</td>
+                                    <td>100,000</td>
+                                    <td>95,000</td>
+                                    <td>Debitar 5,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Dep. Acumulada</td>
+                                    <td>40,000</td>
+                                    <td>35,000</td>
+                                    <td>Acreditar 5,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Gasto Depreciación</td>
+                                    <td>8,000</td>
+                                    <td>10,000</td>
+                                    <td>Acreditar 2,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Utilidades No Dist.</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>Debitar 2,000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </li>
             </ol>
 
@@ -1082,37 +1108,39 @@
             <div class="card">
                 <p><strong>Situación:</strong> En 2020 capitalizaste mal una mejora como gasto. Hoy es 2024.</p>
                 <p><strong>Asiento de Corrección 2024:</strong></p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Cuenta</th>
-                            <th>Debe</th>
-                            <th>Haber</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Maquinaria</td>
-                            <td>50,000</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Utilidades No Distribuidas</td>
-                            <td>15,000</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Depreciación Acumulada</td>
-                            <td></td>
-                            <td>15,000</td>
-                        </tr>
-                        <tr>
-                            <td>Utilidades No Distribuidas</td>
-                            <td></td>
-                            <td>50,000</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Cuenta</th>
+                                <th>Debe</th>
+                                <th>Haber</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Maquinaria</td>
+                                <td>50,000</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Utilidades No Distribuidas</td>
+                                <td>15,000</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Depreciación Acumulada</td>
+                                <td></td>
+                                <td>15,000</td>
+                            </tr>
+                            <tr>
+                                <td>Utilidades No Distribuidas</td>
+                                <td></td>
+                                <td>50,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <p><em>Explicación: Se corrige el activo (+50k), se ajusta la depreciación que debió haberse registrado en años cerrados (15k), y se ajustan las utilidades de años anteriores.</em></p>
             </div>
 
@@ -1132,7 +1160,6 @@
             </div>
         </div>
 
-        <!-- CALCULADORA -->
         <div id="calculadora" class="content-section">
             <h2>6. Calculadora de Depreciación</h2>
 
