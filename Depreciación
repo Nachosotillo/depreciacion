@@ -668,20 +668,329 @@
                 <p>Desde 2023 en adelante, se deprecia Bs. 13,000 anual. Lo de años anteriores NO se toca.</p>
             </div>
 
-            <h3>Cambio de Método (ej. Línea Recta → Unidades de Producción)</h3>
+            <h3>Cambio de Método de Depreciación</h3>
             <div class="card">
-                <p>El proceso es similar, pero ahora el cálculo de depreciación cambia completamente:</p>
+                <p>Un cambio de método ocurre cuando la empresa decide que la forma actual de depreciar ya no refleja adecuadamente el patrón de consumo de los beneficios económicos del activo.</p>
+                <p><strong>Métodos comunes:</strong></p>
+                <ul>
+                    <li><strong>Línea Recta:</strong> Deprecia la misma cantidad cada año</li>
+                    <li><strong>Unidades de Producción:</strong> Deprecia según lo que se produce</li>
+                    <li><strong>Suma de Dígitos:</strong> Deprecia más al principio, menos al final</li>
+                    <li><strong>Saldo Decreciente:</strong> Aplica un % fijo al valor en libros</li>
+                </ul>
+            </div>
+
+            <h3>📘 Ejemplo 1: Línea Recta → Unidades de Producción</h3>
+            <div class="example">
+                <p><strong>Situación Inicial (Años 1-3):</strong></p>
+                <ul>
+                    <li>Máquina comprada: 01/01/2020</li>
+                    <li>Costo: Bs. 120,000</li>
+                    <li>Valor Residual: Bs. 20,000</li>
+                    <li>Vida Útil: 10 años o 50,000 unidades</li>
+                    <li>Método Original: Línea Recta</li>
+                    <li>Política: Fraccionada</li>
+                </ul>
+
+                <p><strong>Cálculo Años 2020-2022 (Línea Recta):</strong></p>
                 <div class="formula">
-                    Depreciación por Unidad = Nueva Base Depreciable ÷ Unidades Totales Restantes
+                    Importe Depreciable = 120,000 - 20,000 = 100,000
                 </div>
                 <div class="formula">
-                    Depreciación del Periodo = Unidades Producidas × Depreciación por Unidad
+                    Depreciación Anual = 100,000 ÷ 10 = 10,000/año
+                </div>
+                <p>Depreciación Acumulada al 31/12/2022: Bs. 30,000 (3 años × 10,000)</p>
+                <p>Valor en Libros al 31/12/2022: Bs. 90,000</p>
+
+                <p><strong>Cambio en 2023:</strong> La gerencia decide que el método de Unidades de Producción refleja mejor el uso real de la máquina.</p>
+
+                <p><strong>Datos adicionales:</strong></p>
+                <ul>
+                    <li>Unidades producidas 2020-2022: 12,000 unidades</li>
+                    <li>Unidades restantes estimadas: 38,000 unidades</li>
+                    <li>Unidades producidas en 2023: 8,000 unidades</li>
+                </ul>
+
+                <p><strong>Cálculo desde 2023 (Unidades de Producción):</strong></p>
+                <div class="formula">
+                    Nueva Base Depreciable = 90,000 - 20,000 = 70,000
+                </div>
+                <div class="formula">
+                    Depreciación por Unidad = 70,000 ÷ 38,000 = Bs. 1.842/unidad
+                </div>
+                <div class="formula">
+                    Depreciación 2023 = 8,000 × 1.842 = Bs. 14,736
+                </div>
+
+                <p><strong>Asiento 2023:</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cuenta</th>
+                            <th>Debe</th>
+                            <th>Haber</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Gasto por Depreciación</td>
+                            <td>14,736</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Depreciación Acumulada</td>
+                            <td></td>
+                            <td>14,736</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>📘 Ejemplo 2: Línea Recta → Suma de Dígitos</h3>
+            <div class="example">
+                <p><strong>Situación Inicial:</strong></p>
+                <ul>
+                    <li>Vehículo comprado: 01/01/2021</li>
+                    <li>Costo: Bs. 80,000</li>
+                    <li>Valor Residual: Bs. 8,000</li>
+                    <li>Vida Útil: 5 años</li>
+                    <li>Método Original: Línea Recta (años 2021-2022)</li>
+                </ul>
+
+                <p><strong>Años 2021-2022 (Línea Recta):</strong></p>
+                <div class="formula">
+                    Depreciación Anual = (80,000 - 8,000) ÷ 5 = 14,400/año
+                </div>
+                <p>Depreciación Acumulada al 31/12/2022: Bs. 28,800</p>
+                <p>Valor en Libros al 31/12/2022: Bs. 51,200</p>
+
+                <p><strong>Cambio en 2023:</strong> Se cambia a Suma de Dígitos para los años restantes.</p>
+
+                <p><strong>Cálculo Suma de Dígitos (años restantes 2023-2025):</strong></p>
+                <div class="formula">
+                    Suma de Dígitos = 3 + 2 + 1 = 6
+                </div>
+                <div class="formula">
+                    Nueva Base Depreciable = 51,200 - 8,000 = 43,200
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Año</th>
+                            <th>Fracción</th>
+                            <th>Cálculo</th>
+                            <th>Depreciación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2023</td>
+                            <td>3/6</td>
+                            <td>43,200 × (3/6)</td>
+                            <td>21,600</td>
+                        </tr>
+                        <tr>
+                            <td>2024</td>
+                            <td>2/6</td>
+                            <td>43,200 × (2/6)</td>
+                            <td>14,400</td>
+                        </tr>
+                        <tr>
+                            <td>2025</td>
+                            <td>1/6</td>
+                            <td>43,200 × (1/6)</td>
+                            <td>7,200</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>Ventaja:</strong> El vehículo deprecia más en los primeros años cuando su uso es más intenso.</p>
+            </div>
+
+            <h3>📘 Ejemplo 3: Unidades de Producción → Línea Recta</h3>
+            <div class="example">
+                <p><strong>Situación:</strong> Una empresa minera tiene equipo que depreciaba por toneladas extraídas, pero decide cambiar a línea recta porque la extracción se volvió irregular.</p>
+
+                <p><strong>Datos Iniciales:</strong></p>
+                <ul>
+                    <li>Equipo comprado: 01/01/2019</li>
+                    <li>Costo: Bs. 200,000</li>
+                    <li>Valor Residual: Bs. 20,000</li>
+                    <li>Capacidad original: 90,000 toneladas</li>
+                    <li>Extraídas 2019-2022: 36,000 toneladas</li>
+                </ul>
+
+                <p><strong>Depreciación 2019-2022 (Unidades):</strong></p>
+                <div class="formula">
+                    Dep. por Tonelada = (200,000 - 20,000) ÷ 90,000 = Bs. 2/ton
+                </div>
+                <div class="formula">
+                    Dep. Acumulada = 36,000 × 2 = Bs. 72,000
+                </div>
+                <p>Valor en Libros al 31/12/2022: Bs. 128,000</p>
+
+                <p><strong>Cambio en 2023 a Línea Recta:</strong></p>
+                <ul>
+                    <li>Nueva vida útil estimada: 6 años restantes (2023-2028)</li>
+                    <li>Nuevo valor residual: Bs. 20,000</li>
+                </ul>
+
+                <div class="formula">
+                    Nueva Base Depreciable = 128,000 - 20,000 = 108,000
+                </div>
+                <div class="formula">
+                    Nueva Depreciación Anual = 108,000 ÷ 6 = Bs. 18,000/año
                 </div>
             </div>
 
-            <div class="tip">
-                Para métodos de unidades, suma las unidades producidas en años anteriores para saber cuántas quedan de la vida útil original.
+            <h3>📘 Ejemplo 4: Con Política de Medio Año</h3>
+            <div class="example">
+                <p><strong>Caso Especial:</strong> Cambio de método con política de medio año (el caso más complejo).</p>
+
+                <p><strong>Situación:</strong></p>
+                <ul>
+                    <li>Activo comprado: 15/08/2020</li>
+                    <li>Costo: Bs. 150,000</li>
+                    <li>Valor Residual: Bs. 15,000</li>
+                    <li>Vida Útil: 9 años</li>
+                    <li>Método Original: Línea Recta</li>
+                    <li>Política: Medio Año</li>
+                </ul>
+
+                <p><strong>Años 2020-2022 (Línea Recta con Medio Año):</strong></p>
+                <div class="formula">
+                    Depreciación Anual Completa = (150,000 - 15,000) ÷ 9 = 15,000/año
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Año</th>
+                            <th>Cálculo</th>
+                            <th>Depreciación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2020</td>
+                            <td>15,000 × 0.5</td>
+                            <td>7,500</td>
+                        </tr>
+                        <tr>
+                            <td>2021</td>
+                            <td>15,000 × 1</td>
+                            <td>15,000</td>
+                        </tr>
+                        <tr>
+                            <td>2022</td>
+                            <td>15,000 × 1</td>
+                            <td>15,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total</strong></td>
+                            <td></td>
+                            <td><strong>37,500</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Valor en Libros al 31/12/2022: Bs. 112,500</p>
+
+                <p><strong>Cambio en 2023 a Suma de Dígitos:</strong></p>
+                <ul>
+                    <li>Vida útil restante: 6.5 años fiscales (porque usaste medio año en 2020)</li>
+                    <li>Para suma de dígitos con medio año: años completos restantes = 7</li>
+                </ul>
+
+                <div class="formula">
+                    Suma de Dígitos = 7 + 6 + 5 + 4 + 3 + 2 + 1 = 28
+                </div>
+                <div class="formula">
+                    Nueva Base Depreciable = 112,500 - 15,000 = 97,500
+                </div>
+
+                <p><strong>Año 2023 (primer año con nuevo método):</strong></p>
+                <div class="formula">
+                    Año Fiscal 4: 97,500 × (7/28) = 24,375
+                </div>
+                <p>Pero por política de medio año (año en curso): 24,375 × 0.5 = 12,187.50</p>
+
+                <p><strong>Año 2024:</strong></p>
+                <p>Año Fiscal 4 (segunda mitad): 24,375 × 0.5 = 12,187.50</p>
+                <p>Año Fiscal 5 (primera mitad): 97,500 × (6/28) × 0.5 = 10,446.43</p>
+                <p>Total 2024: 22,633.93</p>
             </div>
+
+            <div class="warning">
+                <strong>CLAVE con Política de Medio Año:</strong> Cada año calendario combina MITAD de un año fiscal + MITAD del siguiente año fiscal. Esto hace que los cálculos sean más complejos en cambios de método.
+            </div>
+
+            <h3>Resumen: Pasos para Cualquier Cambio de Método</h3>
+            <ol class="steps">
+                <li>
+                    <strong>Determinar el Valor en Libros Actual</strong>
+                    <p>Calcula: Costo - Depreciación Acumulada (con el método viejo)</p>
+                </li>
+                <li>
+                    <strong>Calcular la Nueva Base Depreciable</strong>
+                    <p>Fórmula: Valor en Libros - Valor Residual (puede ser nuevo o el mismo)</p>
+                </li>
+                <li>
+                    <strong>Determinar Vida Útil Restante</strong>
+                    <p>Puede ser en años, unidades, horas, etc. según el nuevo método</p>
+                </li>
+                <li>
+                    <strong>Aplicar la Fórmula del Nuevo Método</strong>
+                    <p>Cada método tiene su propia fórmula de cálculo</p>
+                </li>
+                <li>
+                    <strong>Considerar la Política de Depreciación</strong>
+                    <p>La política sigue vigente aunque cambies de método</p>
+                </li>
+            </ol>
+
+            <div class="tip">
+                Para métodos de unidades/horas, siempre lleva un control de: (a) Unidades/horas totales estimadas originalmente, (b) Unidades/horas ya consumidas, (c) Unidades/horas restantes. Esto te ayudará a calcular correctamente la tasa de depreciación por unidad.
+            </div>
+
+            <h3>Tabla Comparativa de Métodos</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Método</th>
+                        <th>Fórmula Base</th>
+                        <th>Cuándo Usarlo</th>
+                        <th>Patrón</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Línea Recta</strong></td>
+                        <td>(Costo - VR) ÷ Vida Útil</td>
+                        <td>Uso uniforme en el tiempo</td>
+                        <td>Constante</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Unidades de Producción</strong></td>
+                        <td>[(Costo - VR) ÷ Unidades Totales] × Unidades del Periodo</td>
+                        <td>Desgaste por uso variable</td>
+                        <td>Variable</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Suma de Dígitos</strong></td>
+                        <td>(Costo - VR) × (Años Restantes ÷ Suma)</td>
+                        <td>Mayor uso/obsolescencia inicial</td>
+                        <td>Decreciente</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Saldo Decreciente</strong></td>
+                        <td>Valor en Libros × Tasa Fija</td>
+                        <td>Activos tecnológicos</td>
+                        <td>Decreciente</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
         <!-- CORRECCIÓN DE ERRORES -->
